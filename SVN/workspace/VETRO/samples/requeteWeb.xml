@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<reservation xmlns="http://esb.resanet.com">
+	<idReservation>XJ4859D</idReservation>
+	<dateReservation>2008-12-17T09:30:47.0Z</dateReservation>
+	<produit>
+		<codeProduit>B47</codeProduit>
+		<codeTarifaire>B</codeTarifaire>
+		<quantite>ABC</quantite>
+	</produit>
+	<produit>
+		<codeProduit>S89</codeProduit>
+		<codeTarifaire>R</codeTarifaire>
+		<quantite>3</quantite>
+	</produit>
+	<produit>
+		<codeProduit>B01</codeProduit>
+		<codeTarifaire>B</codeTarifaire>
+		<quantite>12</quantite>
+	</produit>
+	<produit>
+		<codeProduit>B02</codeProduit>
+		<codeTarifaire>S</codeTarifaire>
+		<quantite>3</quantite>
+	</produit>
+	<produit>
+		<codeProduit>B03</codeProduit>
+		<codeTarifaire>U</codeTarifaire>
+		<quantite>1</quantite>
+	</produit>
+	<produit>
+		<codeProduit>B04</codeProduit>
+		<codeTarifaire>R</codeTarifaire>
+		<quantite>1</quantite>
+	</produit>
+</reservation>

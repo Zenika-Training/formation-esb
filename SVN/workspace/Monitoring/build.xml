@@ -1,0 +1,7 @@
+<project name="file" default="deploy-sa" basedir=".">
+	
+	<property name="sa.name" value="monitoring-sa.jar" />
+
+	<import file="../Common/script/common.xml" />
+
+</project>

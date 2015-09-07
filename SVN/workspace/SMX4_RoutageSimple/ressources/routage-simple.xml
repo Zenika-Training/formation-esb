@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:osgi="http://activemq.apache.org/camel/schema/osgi" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+       http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
+       http://activemq.apache.org/camel/schema/spring http://activemq.apache.org/camel/schema/spring/camel-spring.xsd
+       http://activemq.apache.org/camel/schema/osgi http://activemq.apache.org/camel/schema/osgi/camel-osgi.xsd">
+
+	<bean id="jms" class="org.apache.camel.component.jms.JmsComponent">
+		<property name="connectionFactory">
+			<bean class="org.apache.activemq.ActiveMQConnectionFactory">
+				<property name="brokerURL" value="vm://localhost?broker.persistent=false" />
+			</bean>
+		</property>
+	</bean>
+
+
+	<osgi:camelContext xmlns="http://camel.apache.org/schema/spring">
+		<route>
+			<from uri="file:C:/ESB/resanet/smx4/inbox?delete=true" />
+			<convertBodyTo type="java.lang.String"/>
+			<to uri="jms:queue:camel.fichier" />
+		</route>
+
+		<route>
+			<from uri="jms:queue:camel.fichier" />
+			<to uri="file:C:/ESB/resanet/smx4/outbox" />
+		</route>
+	</osgi:camelContext>
+
+</beans>

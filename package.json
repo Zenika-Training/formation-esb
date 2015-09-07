@@ -1,0 +1,21 @@
+{
+  "name": "ESB",
+  "description": "Formation ESB",
+  "version": "0.0.1",
+  "author": "Zenika",
+  "homepage": "http://www.zenika.com/formation_esb.html",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Zenika/formation-esb"
+  },
+  "private": true,
+  "dependencies": {
+    "grunt": "^0.4.5",
+    "zenika-formation-framework": "git+https://github.com/Zenika/Formation--Framework.git#tags/0.4.1"
+  },
+  "config": {
+    "deploy": {
+      "name": "zen-formation-esb"
+    }
+  }
+}

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd http://camel.apache.org/schema/osgi
+http://camel.apache.org/schema/osgi/camel-osgi.xsd http://camel.apache.org/schema/spring
+ttp://camel.apache.org/schema/spring/camel-spring.xsd http://camel.apache.org/schema/cxf http://camel.apache.org/schema/cxf/camel-cxf.xsd">
+
+
+	<camelContext id="camel" xmlns="http://camel.apache.org/schema/spring">
+		<packageScan>
+			<package>com.resanet</package>
+		</packageScan>
+	</camelContext>
+
+</beans>

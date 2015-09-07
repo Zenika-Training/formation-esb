@@ -1,0 +1,7 @@
+<project name="file" default="deploy-bundle" basedir=".">
+	
+	<property name="bundle.name" value="nmr.jar" />
+
+	<import file="../Common/script/common_smx4.xml" />
+
+</project>

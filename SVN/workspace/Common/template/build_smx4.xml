@@ -1,0 +1,10 @@
+<project name="file" default="deploy-bundle" basedir=".">
+	
+	<property name="bundle.name" value="nom_du_bundle.jar" />
+
+	<!--
+	<import file="../Common/script/common_smx4.xml" />
+	-->
+	<import file="../script/common_smx4.xml" />
+
+</project>

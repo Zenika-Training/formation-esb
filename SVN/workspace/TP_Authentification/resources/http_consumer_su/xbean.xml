@@ -1,0 +1,16 @@
+<beans xmlns:http="http://servicemix.apache.org/http/1.0"
+	xmlns:esb="http://esb.resanet.com">
+
+	<http:consumer service="esb:httpConsumerAuth" endpoint="httpConsumerAuth"
+		targetService="esb:CamelAuth" targetEndpoint="camelAuth"
+		defaultMep="http://www.w3.org/2004/08/wsdl/in-only"
+		locationURI="http://localhost:7001/httpAuthentification"
+		authMethod="basic" />
+
+	<!--
+		C:\Zenika\curl_719_7>curl.exe
+		http://localhost:7001/httpAuthentification/ -d "<requete/>" --basic -u
+		smx:smx
+	-->
+
+</beans>

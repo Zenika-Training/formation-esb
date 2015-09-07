@@ -1,0 +1,10 @@
+<project name="file" default="deploy-sa" basedir=".">
+
+	<property name="sa.name" value="xxxx-sa.jar" />
+
+	<!--
+	<import file="../Common/script/common.xml" />
+	-->
+	<import file="../script/common.xml" />
+
+</project>

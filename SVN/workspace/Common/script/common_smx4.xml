@@ -1,0 +1,54 @@
+<project name="common" default="deploy-bundle" basedir=".">
+
+	<taskdef resource="net/sf/antcontrib/antcontrib.properties" />
+
+	<property name="bundle.name" value="" />
+
+	<property name="servicemix.home" value="C:/servicemix4.2.0/apache-servicemix-4.2.0" />
+	<property name="servicemix.lib" value="C:/servicemix4.2.0/apache-servicemix-4.2.0/lib" />
+	<property name="servicemix.deploy" value="C:/servicemix4.2.0/apache-servicemix-4.2.0/deploy" />
+
+	<property name="build.dir" value="build" />
+	<property name="tmp.dir" value="tmp" />
+
+	<path id="compile.path">
+		<fileset dir="${servicemix.lib}">
+			<include name="**/*" />
+		</fileset>
+		<fileset dir="${basedir}/../Common/lib/">
+					<include name="**/*" />
+		</fileset>
+	</path>
+
+	<target name="clean">
+		<delete dir="target" quiet="true" />
+		<delete dir="${build.dir}" quiet="true" />
+	</target>
+
+	<target name="init">
+		<mkdir dir="${build.dir}" />
+	</target>
+
+	<target name="build-bundle" depends="clean,init">
+
+		<!-- compilation des classes du su -->
+		<mkdir dir="${tmp.dir}" />
+		<javac srcdir="src" destdir="${tmp.dir}">
+			<classpath refid="compile.path" />
+		</javac>
+
+		<!-- jar -->
+		<zip destfile="${build.dir}/${bundle.name}">
+			<fileset dir="${tmp.dir}"/>
+			<fileset dir="." includes="META-INF/**"/>
+		</zip>
+
+		<!-- suppression des fichiers temporaires -->
+		<delete dir="${tmp.dir}" quiet="true" />
+	</target>
+
+	<target name="deploy-bundle" depends="build-bundle">
+		<copy file="${build.dir}/${bundle.name}" tofile="${servicemix.deploy}/${bundle.name}" overwrite="true" />
+	</target>
+
+</project>

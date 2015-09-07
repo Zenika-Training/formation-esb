@@ -1,0 +1,8 @@
+<project name="file" default="deploy-sa" basedir=".">
+	
+	<property name="sa.name" value="cxf-sa.jar" />
+
+	<import file="../Common/script/common.xml" />
+	
+	
+</project>

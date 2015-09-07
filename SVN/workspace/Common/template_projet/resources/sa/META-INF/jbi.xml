@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jbi xmlns="http://java.sun.com/xml/ns/jbi" version="1.0">
+	<service-assembly>
+		<identification>
+			<name>xxxx-sa</name>
+		</identification>
+		<service-unit>
+			<identification>
+				<name>xxxx</name>
+			</identification>
+			<target>
+				<component-name>servicemix-jms</component-name>
+				<artifacts-zip>xxxx_su.jar</artifacts-zip>
+			</target>
+		</service-unit>
+	</service-assembly>
+</jbi>

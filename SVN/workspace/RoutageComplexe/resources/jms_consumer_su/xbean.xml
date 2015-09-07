@@ -1,0 +1,12 @@
+<beans xmlns:jms="http://servicemix.apache.org/jms/1.0" xmlns:esb="http://esb.resanet.com">
+
+	<jms:consumer service="esb:jmsConsumerTP61" endpoint="jmsConsumer"
+		targetService="esb:RoutageComplexe" targetEndpoint="Camel"
+		destinationName="queue/resanet/routageComplexe/requete"
+		connectionFactory="#connectionFactory" concurrentConsumers="5" />
+
+	<bean id="connectionFactory" class="org.apache.activemq.ActiveMQConnectionFactory">
+		<property name="brokerURL" value="tcp://localhost:61617" />
+	</bean>
+
+</beans>

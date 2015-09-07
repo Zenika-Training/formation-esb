@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jbi xmlns="http://java.sun.com/xml/ns/jbi" version="1.0">
+	<service-assembly>
+		<identification>
+			<name>routage-simple-sa</name>
+		</identification>
+		<service-unit>
+			<identification>
+				<name>jms_consumer_routage-simple</name>
+			</identification>
+			<target>
+				<component-name>servicemix-jms</component-name>
+				<artifacts-zip>jms_consumer_su.jar
+				</artifacts-zip>
+			</target>
+		</service-unit>
+		<service-unit>
+			<identification>
+				<name>jms_provider_routage-simple</name>
+			</identification>
+			<target>
+				<component-name>servicemix-jms</component-name>
+				<artifacts-zip>jms_provider_su.jar
+				</artifacts-zip>
+			</target>
+		</service-unit>
+		<service-unit>
+			<identification>
+				<name>file-sender-routage-simple</name>
+			</identification>
+			<target>
+				<component-name>servicemix-file</component-name>
+				<artifacts-zip>file_sender_su.jar</artifacts-zip>
+			</target>
+		</service-unit>
+		<service-unit>
+			<identification>
+				<name>camel_routage-simple</name>
+			</identification>
+			<target>
+				<component-name>servicemix-camel</component-name>
+				<artifacts-zip>camel_su.jar</artifacts-zip>
+			</target>
+		</service-unit>
+	</service-assembly>
+</jbi>

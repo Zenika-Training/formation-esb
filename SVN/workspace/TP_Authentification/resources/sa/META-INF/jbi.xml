@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jbi xmlns="http://java.sun.com/xml/ns/jbi" version="1.0">
+	<service-assembly>
+		<identification>
+			<name>authentification-sa</name>
+		</identification>
+		<service-unit>
+			<identification>
+				<name>http_consumer_authentification</name>
+			</identification>
+			<target>
+				<component-name>servicemix-http</component-name>
+				<artifacts-zip>http_consumer_su.jar</artifacts-zip>
+			</target>
+		</service-unit>
+		<service-unit>
+			<identification>
+				<name>camel_authentification</name>
+			</identification>
+			<target>
+				<component-name>servicemix-camel</component-name>
+				<artifacts-zip>camel_su.jar</artifacts-zip>
+			</target>
+		</service-unit>
+	</service-assembly>
+</jbi>

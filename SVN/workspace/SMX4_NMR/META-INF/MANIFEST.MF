@@ -1,0 +1,3 @@
+Bundle-SymbolicName: nmr
+Bundle-Version: 1.0.0
+DynamicImport-Package: *

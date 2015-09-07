@@ -1,0 +1,10 @@
+<beans xmlns:f="http://servicemix.apache.org/file/1.0"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:hot="http://www.resanet.partenaires.com/hotel">
+
+		<context:property-placeholder
+		location="file:/C:\ESB\resanet\config\webservices.properties" />
+
+	<f:sender service="hot:WSLog" endpoint="endpoint" directory="${ws.log.dir}" />
+
+</beans>

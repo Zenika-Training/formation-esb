@@ -1,0 +1,13 @@
+<beans xmlns:cxfbc="http://servicemix.apache.org/cxfbc/1.0"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:esb="http://esb.resanet.com/" xmlns:air="http://airalpha.com/services/1.0">
+
+	<context:property-placeholder
+		location="file:/C:\ESB\resanet\config\tp9.properties" />
+
+	<cxfbc:provider wsdl="http://localhost:8088/mockairAlphaBinding?WSDL"
+		locationURI="http://localhost:8088/mockairAlphaBinding" service="air:airAlphaService"
+		endpoint="airAlphaPort" interfaceName="air:airAlphaPortType"
+		useJBIWrapper="false" useSOAPEnvelope="false"/>
+
+</beans>

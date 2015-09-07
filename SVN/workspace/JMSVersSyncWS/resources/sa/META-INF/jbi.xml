@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jbi xmlns="http://java.sun.com/xml/ns/jbi" version="1.0">
+	<service-assembly>
+		<identification>
+			<name>cxf-sa</name>
+		</identification>
+		<service-unit>
+			<identification>
+				<name>jms_consumer_reservation</name>
+			</identification>
+			<target>
+				<component-name>servicemix-jms</component-name>
+				<artifacts-zip>jms_consumer_su.jar
+				</artifacts-zip>
+			</target>
+		</service-unit>
+		<service-unit>
+			<identification>
+				<name>cxf-provider_airalpha</name>
+			</identification>
+			<target>
+				<component-name>servicemix-cxf-bc</component-name>
+				<artifacts-zip>ws_provider_su.jar</artifacts-zip>
+			</target>
+		</service-unit>
+		<service-unit>
+			<identification>
+				<name>pipeline-camel-airalpha</name>
+			</identification>
+			<target>
+				<component-name>servicemix-camel</component-name>
+				<artifacts-zip>camel_su.jar</artifacts-zip>
+			</target>
+		</service-unit>
+		<service-unit>
+			<identification>
+				<name>jms_provider_reservation</name>
+			</identification>
+			<target>
+				<component-name>servicemix-jms</component-name>
+				<artifacts-zip>jms_provider_su.jar
+				</artifacts-zip>
+			</target>
+		</service-unit>
+	</service-assembly>
+</jbi>

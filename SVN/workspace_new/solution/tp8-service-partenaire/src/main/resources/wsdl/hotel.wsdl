@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+	xmlns:tns="http://www.resanet.partenaires.com/hotel"
+    xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://www.resanet.partenaires.com/hotel">
+
+	<!-- TYPES -->
+	<wsdl:types>
+		<xsd:schema targetNamespace="http://www.resanet.partenaires.com/hotel">
+			<xsd:include schemaLocation="hotel.xsd" />
+		</xsd:schema>
+	</wsdl:types>
+
+	<!-- MESSAGES -->
+	<wsdl:message name="rechercherHotelRequest">
+		<wsdl:part name="in" element="tns:rechercherHotelRequest" />
+	</wsdl:message>
+	<wsdl:message name="rechercherHotelResponse">
+		<wsdl:part name="out" element="tns:rechercherHotelResponse" />
+	</wsdl:message>
+	<wsdl:message name="rechercherHotelFault">
+		<wsdl:part name="fault" element="tns:rechercherHotelFault" />
+	</wsdl:message>
+
+	<!-- PORT TYPE -->
+	<wsdl:portType name="hotelEndPoint">
+
+		<wsdl:operation name="rechercherHotel">
+			<wsdl:input message="tns:rechercherHotelRequest"/>
+			<wsdl:output message="tns:rechercherHotelResponse"/>
+			<wsdl:fault name="fault" message="tns:rechercherHotelFault"/>
+		</wsdl:operation>
+	</wsdl:portType>
+
+	<!-- BINDING -->
+	<wsdl:binding name="hotelServiceBinding" type="tns:hotelEndPoint">
+		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http" />
+		<wsdl:operation name="rechercherHotel">
+			<wsdl:input>
+				<soap:body parts="in" use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body parts="out" use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="fault">
+				<soap:fault name="fault" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+	</wsdl:binding>
+
+	<!-- SERVICE -->
+	<wsdl:service name="hotelService">
+		<wsdl:port name="hotelServicePort" binding="tns:hotelServiceBinding" >
+			<soap:address location="http://localhost:8080/services/hotel" />
+		</wsdl:port>
+	</wsdl:service>
+</wsdl:definitions>

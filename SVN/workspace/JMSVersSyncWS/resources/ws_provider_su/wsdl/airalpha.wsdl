@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsa="http://schemas.xmlsoap.org/ws/2003/03/addressing" xmlns:tns="http://airalpha.com/services/1.0" targetNamespace="http://airalpha.com/services/1.0" name="AirAlpha">
+	<types>
+		<xsd:schema elementFormDefault="qualified" targetNamespace="http://airalpha.com/services/1.0">
+			<xsd:element name="requete">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="dateReception" type="xsd:date"/>
+						<xsd:element name="voyage" type="xsd:string"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="reponse">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="statut" type="xsd:string"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:schema>
+	</types>
+	<message name="requeteMessage">
+		<part name="requete" element="tns:requete"/>
+	</message>
+	<message name="reponseMessage">
+		<part name="reponse" element="tns:reponse"/>
+	</message>
+	<portType name="airAlphaPortType">
+		<operation name="reservation">
+			<input name="requete" message="tns:requeteMessage"/>
+			<output name="reponse" message="tns:reponseMessage"/>
+		</operation>
+	</portType>
+	<binding name="airAlphaBinding" type="tns:airAlphaPortType">
+		<soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+		<operation name="reservation">
+			<soap:operation soapAction="reservation"/>
+			<input name="requete">
+				<soap:body use="literal"/>
+			</input>
+			<output name="reponse">
+				<soap:body use="literal"/>
+			</output>
+		</operation>
+	</binding>
+	<service name="airAlphaService">
+		<port name="airAlphaPort" binding="tns:airAlphaBinding">
+			<soap:address location="REPLACE_WITH_ACTUAL_URL"/>
+		</port>
+	</service>
+</definitions>

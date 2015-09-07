@@ -1,0 +1,75 @@
+<project name="common" default="deploy-sa" basedir=".">
+
+	<taskdef resource="net/sf/antcontrib/antcontrib.properties" />
+
+	<property name="sa.name" value="" />
+
+	<property name="servicemix.home" value="C:/servicemix3.3.2/apache-servicemix-3.3.2" />
+	<property name="servicemix.lib" value="C:/servicemix3.3.2/apache-servicemix-3.3.2/lib" />
+	<property name="servicemix.deploy" value="C:/servicemix3.3.2/apache-servicemix-3.3.2/hotdeploy" />
+
+	<property name="build.dir" value="build" />
+	<property name="tmp.dir" value="tmp" />
+
+	<path id="compile.path">
+		<fileset dir="${servicemix.lib}">
+			<include name="**/*" />
+		</fileset>
+		<fileset dir="${basedir}/../Common/lib/">
+			<include name="**/*" />
+		</fileset>
+	</path>
+
+	<target name="clean">
+		<delete dir="target" quiet="true" />
+		<delete dir="${build.dir}" quiet="true" />
+	</target>
+
+	<target name="init">
+		<mkdir dir="${build.dir}" />
+	</target>
+
+	<target name="build-su">
+		<basename property="nom-su" file="${repertoire-su}" />
+
+		<!-- compilation des classes du su -->
+		<mkdir dir="${tmp.dir}" />
+		<if>
+			<available filepath="src/com/resanet" file="${nom-su}" type="dir" property="src.present" />
+			<then>
+				<javac srcdir="src" destdir="${tmp.dir}" includes="com/resanet/${nom-su}/**,com/resanet/common/**">
+					<classpath refid="compile.path" />
+				</javac>
+			</then>
+		</if>
+
+		<!-- package du su -->
+		<jar destfile="${build.dir}/${nom-su}.jar">
+			<fileset dir="${repertoire-su}" />
+			<fileset dir="${tmp.dir}" />
+		</jar>
+
+		<!-- suppression des fichiers temporaires -->
+		<delete dir="${tmp.dir}" quiet="true" />
+	</target>
+
+	<target name="build-sa" depends="clean,init">
+		<foreach param="repertoire-su" target="build-su">
+			<path>
+				<dirset dir="resources">
+					<include name="**_su" />
+				</dirset>
+			</path>
+		</foreach>
+
+		<jar destfile="${build.dir}/${sa.name}">
+			<fileset dir="${build.dir}" includes="*.jar" />
+			<fileset dir="resources/sa" />
+		</jar>
+	</target>
+
+	<target name="deploy-sa" depends="build-sa">
+		<copy file="${build.dir}/${sa.name}" tofile="${servicemix.deploy}/${sa.name}" overwrite="true" />
+	</target>
+
+</project>

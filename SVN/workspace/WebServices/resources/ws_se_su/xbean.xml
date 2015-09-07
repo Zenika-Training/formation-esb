@@ -1,0 +1,13 @@
+<beans xmlns:f="http://servicemix.apache.org/file/1.0"
+	xmlns:hot="http://www.resanet.partenaires.com/hotel"
+	xmlns:cxfse="http://servicemix.apache.org/cxfse/1.0">
+
+	<cxfse:endpoint
+		useJBIWrapper="false"
+		useSOAPEnvelope="true">
+		<cxfse:pojo>
+			<bean class="com.resanet.ws_se_su.HotelPortTypeImpl"/>
+		</cxfse:pojo>
+	</cxfse:endpoint>
+
+</beans>

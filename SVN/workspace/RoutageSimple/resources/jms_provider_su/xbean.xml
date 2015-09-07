@@ -1,0 +1,19 @@
+<beans xmlns:jms="http://servicemix.apache.org/jms/1.0"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:esb="http://esb.resanet.com/">
+
+	<context:property-placeholder
+		location="file:/C:\ESB\resanet\config\tp5.properties" />
+
+
+	<jms:provider service="esb:jmsProviderTP5b1" endpoint="jmsProviderGadget"
+		destinationName="${tp5b.jms.queue.gadget}" connectionFactory="#connectionFactory" />
+
+	<jms:provider service="esb:jmsProviderTP5b2" endpoint="jmsProviderWidget"
+		destinationName="${tp5b.jms.queue.widget}" connectionFactory="#connectionFactory" />
+
+	<bean id="connectionFactory" class="org.apache.activemq.ActiveMQConnectionFactory">
+		<property name="brokerURL" value="${jms.broker}" />
+	</bean>
+
+</beans>

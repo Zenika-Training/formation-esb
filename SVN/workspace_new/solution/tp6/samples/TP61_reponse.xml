@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<reponse xmlns="http://esb.resanet.com">
+	<bean1 xmlns="http://esb.resanet.com">
+		<camel>123</camel>
+	</bean1>
+	<bean2 xmlns="http://esb.resanet.com">
+		<smx>456</smx>
+	</bean2>
+	<bean3 xmlns="http://esb.resanet.com">
+		<amq>789</amq>
+	</bean3>
+</reponse>

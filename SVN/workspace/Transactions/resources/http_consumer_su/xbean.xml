@@ -1,0 +1,13 @@
+<beans xmlns:http="http://servicemix.apache.org/http/1.0"
+	xmlns:esb="http://esb.resanet.com">
+
+	<http:consumer service="esb:httpConsumerTrans" endpoint="httpConsumerTrans"
+		targetService="esb:jmsProviderTransTempo" targetEndpoint="jmsProviderTransTempo"
+		defaultMep="http://www.w3.org/2004/08/wsdl/in-only"
+		locationURI="http://localhost:7000/httpConsumer" />
+
+<!-- 
+C:\Zenika\curl_719_7>curl.exe http://localhost:7000/httpConsumer/ -d "<abc/>"
+ -->
+
+</beans>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.resanet.com/informations"
+	xmlns:tns="http://www.resanet.com/informations" elementFormDefault="qualified">
+
+	<element name="detour" type="boolean"/>
+
+</schema>

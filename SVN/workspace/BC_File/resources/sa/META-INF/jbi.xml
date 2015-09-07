@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jbi xmlns="http://java.sun.com/xml/ns/jbi" version="1.0">
+     
+  <service-assembly>
+    <identification>
+      <name>file-sa-tp2</name>
+    </identification>
+    <service-unit>
+      <identification>
+        <name>file-poller-tp2</name>
+      </identification>
+      <target>
+      	<component-name>servicemix-file</component-name>
+        <artifacts-zip>file_poller_su.jar</artifacts-zip>
+      </target>
+    </service-unit>
+    <service-unit>
+      <identification>
+        <name>file-sender-tp2</name>
+      </identification>
+      <target>
+      	<component-name>servicemix-file</component-name>
+        <artifacts-zip>file_sender_su.jar</artifacts-zip>
+      </target>
+    </service-unit>
+  </service-assembly>
+    
+</jbi>

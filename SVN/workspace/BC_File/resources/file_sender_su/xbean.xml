@@ -1,0 +1,11 @@
+<beans xmlns:f="http://servicemix.apache.org/file/1.0"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:esb="http://esb.resanet.com/">
+
+	<context:property-placeholder
+		location="file:/C:\ESB\resanet\config\tp2.properties" />
+
+	<f:sender service="esb:fileCatSender" endpoint="sender"
+		directory="${file.sender.out}" />
+
+</beans>

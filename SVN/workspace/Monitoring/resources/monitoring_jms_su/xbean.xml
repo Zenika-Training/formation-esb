@@ -1,0 +1,21 @@
+<beans xmlns:jms="http://servicemix.apache.org/jms/1.0" xmlns:inf="http://www.resanet.com/informations">
+
+	<jms:consumer service="inf:jmsSource" endpoint="endpoint"
+		targetService="inf:wiretap" destinationName="file.demande.informations"
+		connectionFactory="#connectionFactory" />
+
+	<jms:provider service="inf:jmsDestination" endpoint="endpoint"
+		destinationName="file.reponse.informations" connectionFactory="#connectionFactory" />
+
+	<jms:provider service="inf:wiretapSource" endpoint="endpoint"
+		destinationName="file.monitoring.demande" connectionFactory="#connectionFactory" />
+
+	<jms:consumer service="inf:wiretapDestination" endpoint="endpoint"
+		targetService="inf:wiretapLog" destinationName="file.monitoring.demande"
+		connectionFactory="#connectionFactory" />
+
+	<bean id="connectionFactory" class="org.apache.activemq.ActiveMQConnectionFactory">
+		<property name="brokerURL" value="tcp://localhost:61616" />
+	</bean>
+
+</beans>

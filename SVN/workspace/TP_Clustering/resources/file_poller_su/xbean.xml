@@ -1,0 +1,7 @@
+<beans xmlns:f="http://servicemix.apache.org/file/1.0" xmlns:esb="http://esb.resanet.com">
+
+	<f:poller service="esb:fileClusterPoller" endpoint="poller"
+		file="C:/ESB/resanet/cluster/in" targetService="esb:fileClusterSender"
+		targetEndpoint="sender" period="10000" />
+
+</beans>

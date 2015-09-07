@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans">
+
+	<camelContext streamCache="true"
+		xmlns="http://camel.apache.org/schema/spring">
+    	<package>com.resanet.ws_router_su</package>
+  	</camelContext>
+
+</beans>

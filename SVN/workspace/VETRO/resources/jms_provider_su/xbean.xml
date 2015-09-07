@@ -1,0 +1,15 @@
+<beans xmlns:jms="http://servicemix.apache.org/jms/1.0"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:esb="http://esb.resanet.com">
+
+	<context:property-placeholder
+		location="file:/C:\ESB\resanet\config\tpVETRO.properties" />
+
+	<jms:provider service="esb:jmsProviderTPVETRO" endpoint="jmsProvider"
+		destinationName="${jms.webresa.queue.to.resa}" connectionFactory="#connectionFactory" />
+
+	<bean id="connectionFactory" class="org.apache.activemq.ActiveMQConnectionFactory">
+		<property name="brokerURL" value="${jms.webresa.broker}" />
+	</bean>
+
+</beans>

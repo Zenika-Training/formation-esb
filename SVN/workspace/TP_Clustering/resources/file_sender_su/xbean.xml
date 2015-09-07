@@ -1,0 +1,6 @@
+<beans xmlns:f="http://servicemix.apache.org/file/1.0" xmlns:esb="http://esb.resanet.com">
+
+	<f:sender service="esb:fileClusterSender" endpoint="sender"
+		directory="C:/ESB/resanet/cluster/out" />
+
+</beans>

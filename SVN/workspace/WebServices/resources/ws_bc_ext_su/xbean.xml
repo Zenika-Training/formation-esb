@@ -1,0 +1,12 @@
+<beans xmlns:hot="http://www.resanet.partenaires.com/hotel"
+	xmlns:cxfbc="http://servicemix.apache.org/cxfbc/1.0">
+
+	<cxfbc:provider
+		wsdl="http://localhost:11000/partenaire?wsdl"
+		service="hot:partenaireService"
+		
+		useJBIWrapper="false"
+		useSOAPEnvelope="true">
+	</cxfbc:provider>
+
+</beans>

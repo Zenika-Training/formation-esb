@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans">
+	<camelContext id="camel" streamCache="true"
+		xmlns="http://camel.apache.org/schema/spring">
+		<packageScan>
+			<package>com.resanet</package>
+		</packageScan>
+	</camelContext>
+
+
+	<bean id="jmsConnectionFactory" class="org.apache.activemq.ActiveMQConnectionFactory">
+		<property name="brokerURL" value="tcp://localhost:61617" />
+	</bean>
+
+	<bean id="amq" class="org.apache.activemq.camel.component.ActiveMQComponent">
+		<property name="connectionFactory" ref="jmsConnectionFactory" />
+	</bean>
+
+</beans>

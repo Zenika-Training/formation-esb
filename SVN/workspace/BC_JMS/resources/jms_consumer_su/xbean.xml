@@ -1,0 +1,23 @@
+<beans xmlns:jms="http://servicemix.apache.org/jms/1.0"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:esb="http://esb.resanet.com/">
+
+	<context:property-placeholder
+		location="file:/C:\ESB\resanet\config\tp3.properties" />
+
+	<jms:consumer service="esb:resaJMSConsumer" endpoint="resaConsumer"
+		targetService="esb:fileResaSender" targetEndpoint="sender"
+		destinationName="${jms.reservation.queue}" pubSubDomain="false"
+		connectionFactory="#connectionFactory" concurrentConsumers="5" />
+
+	<bean id="connectionFactory" class="org.apache.activemq.pool.PooledConnectionFactory">
+		<property name="connectionFactory">
+			<bean class="org.apache.activemq.ActiveMQConnectionFactory">
+				<property name="brokerURL" value="${jms.reservation.broker}" />
+			</bean>
+		</property>
+		<property name="maxConnections" value="1" />
+		<property name="maximumActive" value="5" />
+	</bean>
+
+</beans>

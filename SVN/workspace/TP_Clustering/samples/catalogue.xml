@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<catalogueResanet xmlns="http://catalogue.resanet.com">
+	<offre>
+		<id>B01</id>
+		<codeTarif>Y90</codeTarif>
+	</offre>
+	<offre>
+		<id>R98</id>
+		<codeTarif>Y91</codeTarif>
+	</offre>
+	<offre>
+		<id>F99</id>
+		<codeTarif>Y92</codeTarif>
+	</offre>
+</catalogueResanet>

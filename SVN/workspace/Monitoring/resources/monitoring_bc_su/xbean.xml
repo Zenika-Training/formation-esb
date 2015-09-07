@@ -1,0 +1,8 @@
+<beans xmlns:inf="http://www.resanet.com/informations"
+	xmlns:cxfbc="http://servicemix.apache.org/cxfbc/1.0">
+
+	<cxfbc:consumer wsdl="classpath:wsdl/controle.wsdl"
+		targetService="inf:detourControle"
+		useJBIWrapper="false" useSOAPEnvelope="false" />
+
+</beans>

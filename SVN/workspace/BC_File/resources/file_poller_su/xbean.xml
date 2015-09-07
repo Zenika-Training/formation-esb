@@ -1,0 +1,12 @@
+<beans xmlns:f="http://servicemix.apache.org/file/1.0"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:esb="http://esb.resanet.com/">
+
+	<context:property-placeholder
+		location="file:/C:\ESB\resanet\config\tp2.properties" />
+
+	<f:poller service="esb:fileCatPoller" endpoint="poller"
+		file="${file.poller.in}" targetService="esb:fileCatSender"
+		targetEndpoint="sender" period="${file.poller.periode}" />
+
+</beans>

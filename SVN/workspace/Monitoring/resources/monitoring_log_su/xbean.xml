@@ -1,0 +1,7 @@
+<beans xmlns:f="http://servicemix.apache.org/file/1.0"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:inf="http://www.resanet.com/informations">
+
+	<f:sender service="inf:wiretapLog" endpoint="endpoint" directory="C:/Tmp/servicemix/wiretap" />
+
+</beans>

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jbi xmlns="http://java.sun.com/xml/ns/jbi" version="1.0">
+
+	<service-assembly>
+		<identification>
+			<name>monitoring-sa</name>
+		</identification>
+
+		<service-unit>
+			<identification>
+				<name>monitoring-jms</name>
+			</identification>
+			<target>
+				<component-name>servicemix-jms</component-name>
+				<artifacts-zip>monitoring_jms_su.jar</artifacts-zip>
+			</target>
+		</service-unit>
+		<service-unit>
+			<identification>
+				<name>monitoring-traitement</name>
+			</identification>
+			<target>
+				<component-name>servicemix-camel</component-name>
+				<artifacts-zip>monitoring_traitement_su.jar</artifacts-zip>
+			</target>
+		</service-unit>
+		<service-unit>
+			<identification>
+				<name>monitoring-wiretap</name>
+			</identification>
+			<target>
+				<component-name>servicemix-camel</component-name>
+				<artifacts-zip>monitoring_wiretap_su.jar</artifacts-zip>
+			</target>
+		</service-unit>
+		<service-unit>
+			<identification>
+				<name>monitoring-log</name>
+			</identification>
+			<target>
+				<component-name>servicemix-file</component-name>
+				<artifacts-zip>monitoring_log_su.jar</artifacts-zip>
+			</target>
+		</service-unit>
+		<service-unit>
+			<identification>
+				<name>monitoring-detour</name>
+			</identification>
+			<target>
+				<component-name>servicemix-camel</component-name>
+				<artifacts-zip>monitoring_detour_su.jar</artifacts-zip>
+			</target>
+		</service-unit>
+		<service-unit>
+			<identification>
+				<name>monitoring-validation</name>
+			</identification>
+			<target>
+				<component-name>servicemix-camel</component-name>
+				<artifacts-zip>monitoring_validation_su.jar</artifacts-zip>
+			</target>
+		</service-unit>
+		<service-unit>
+			<identification>
+				<name>monitoring-bc</name>
+			</identification>
+			<target>
+				<component-name>servicemix-cxf-bc</component-name>
+				<artifacts-zip>monitoring_bc_su.jar</artifacts-zip>
+			</target>
+		</service-unit>
+	</service-assembly>
+
+</jbi>

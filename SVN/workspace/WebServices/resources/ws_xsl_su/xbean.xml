@@ -1,0 +1,14 @@
+<beans xmlns:hot="http://www.resanet.partenaires.com/hotel"
+	xmlns:saxon="http://servicemix.apache.org/saxon/1.0">
+
+	<saxon:proxy
+		service="hot:xslt"
+		endpoint="endpoint"
+		resource="classpath:xsl/requete.xsl"
+		outResource="classpath:xsl/reponse.xsl">
+		<saxon:target>
+			<saxon:exchange-target service="hot:partenaireService" />
+		</saxon:target>
+	</saxon:proxy>
+
+</beans>

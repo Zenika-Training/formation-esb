@@ -1,0 +1,20 @@
+<beans xmlns:jms="http://servicemix.apache.org/jms/1.0"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:esb="http://esb.resanet.com/">
+
+	<context:property-placeholder
+		location="file:/C:\ESB\resanet\config\tp5.properties" />
+
+	<jms:consumer service="esb:jmsConsumerTP5a" endpoint="jmsConsumer"
+		targetService="esb:CamelRouter" targetEndpoint="pipe"
+		destinationName="${tp5a.jms.queue.requete}" connectionFactory="#connectionFactory" />
+
+	<jms:consumer service="esb:jmsConsumerTP5b" endpoint="jmsConsumer"
+		targetService="esb:CamelCBR" targetEndpoint="cbr"
+		destinationName="${tp5b.jms.queue.requete}" connectionFactory="#connectionFactory" />
+
+	<bean id="connectionFactory" class="org.apache.activemq.ActiveMQConnectionFactory">
+		<property name="brokerURL" value="${jms.broker}" />
+	</bean>
+
+</beans>

@@ -1,0 +1,17 @@
+<beans xmlns:jms="http://servicemix.apache.org/jms/1.0"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:esb="http://esb.resanet.com/" xmlns:air="http://airalpha.com/services/1.0">
+
+	<context:property-placeholder
+		location="file:/C:\ESB\resanet\config\tp9.properties" />
+
+	<jms:consumer service="esb:resaJMSConsumerTP5" endpoint="resaConsumer"
+		targetService="esb:resaVersAirAlpha" targetEndpoint="jmsToWs"
+		destinationName="${jms.reservation.queue.requete}" connectionFactory="#connectionFactory"
+		concurrentConsumers="5" />
+
+	<bean id="connectionFactory" class="org.apache.activemq.ActiveMQConnectionFactory">
+		<property name="brokerURL" value="${jms.reservation.broker}" />
+	</bean>
+
+</beans>

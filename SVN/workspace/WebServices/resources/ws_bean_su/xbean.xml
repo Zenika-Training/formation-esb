@@ -1,0 +1,10 @@
+<beans xmlns:bean="http://servicemix.apache.org/bean/1.0"
+	   xmlns:hot="http://www.resanet.partenaires.com/hotel">
+
+  	<bean:endpoint service="hot:messageBean" 
+  		endpoint="endpoint" 
+  		bean="#messageBean"/>
+  
+  	<bean id="messageBean" class="com.resanet.ws_bean_su.MessageBean" />
+
+</beans>

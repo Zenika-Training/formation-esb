@@ -1,0 +1,15 @@
+<beans xmlns:jms="http://servicemix.apache.org/jms/1.0" xmlns:esb="http://esb.resanet.com">
+
+	<jms:provider service="esb:jmsProviderRoutageComplexe"
+		endpoint="out" connectionFactory="#connectionFactory" />
+
+	<jms:provider service="esb:jmsProviderRoutageComplexe"
+		endpoint="outNotification" connectionFactory="#connectionFactory"
+		destinationName="queue/resanet/tp61/reponseNotification" />
+
+
+	<bean id="connectionFactory" class="org.apache.activemq.ActiveMQConnectionFactory">
+		<property name="brokerURL" value="tcp://localhost:61617" />
+	</bean>
+
+</beans>
