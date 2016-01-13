@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project name="detour?wsdl" resourceRoot="" soapui-version="4.0.1" abortOnError="false" runType="SEQUENTIAL" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" wsaVersion="NONE" name="DetourPortTypeServiceSoapBinding" type="wsdl" bindingName="{http://www.resanet.com/informations}DetourPortTypeServiceSoapBinding" soapVersion="1_1" anonymous="optional" definition="http://localhost:8181/cxf/detour?wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="http://localhost:8181/cxf/detour?wsdl"><con:part><con:url>http://localhost:8181/cxf/detour?wsdl</con:url><con:content><![CDATA[<wsdl:definitions name="DetourPortTypeService" targetNamespace="http://www.resanet.com/informations" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://www.resanet.com/informations" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <wsdl:types>
+    <xs:schema targetNamespace="http://www.resanet.com/informations" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="detour" type="xs:boolean"/>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="detour">
+    <wsdl:part element="tns:detour" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="detourPortType">
+    <wsdl:operation name="detour">
+      <wsdl:input message="tns:detour" name="detour"></wsdl:input>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="DetourPortTypeServiceSoapBinding" type="tns:detourPortType">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="detour">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="detour">
+        <soap:body use="literal"/>
+      </wsdl:input>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="DetourPortTypeService">
+    <wsdl:port binding="tns:DetourPortTypeServiceSoapBinding" name="detourPortTypePort">
+      <soap:address location="http://localhost:8181/cxf/detour"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://localhost:8181/cxf/detour</con:endpoint></con:endpoints><con:operation isOneWay="false" action="" name="detour" bindingOperationName="detour" type="One-Way" inputName="detour" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8181/cxf/detour</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:inf="http://www.resanet.com/informations">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <inf:detour>true</inf:detour>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.resanet.com/informations/detourPortType/detour"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:properties/><con:wssContainer/></con:soapui-project>

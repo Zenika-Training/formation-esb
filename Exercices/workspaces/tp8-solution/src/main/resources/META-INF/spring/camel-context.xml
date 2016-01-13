@@ -1,0 +1,39 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:cxf="http://camel.apache.org/schema/cxf"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+			                   http://www.springframework.org/schema/beans/spring-beans.xsd
+			               http://camel.apache.org/schema/spring
+                                http://camel.apache.org/schema/spring/camel-spring.xsd
+		                   http://camel.apache.org/schema/cxf
+			                   http://camel.apache.org/schema/cxf/camel-cxf.xsd">
+
+
+
+    <cxf:cxfEndpoint id="routerEndpoint"
+                     address="/services/hotel"
+                     serviceClass="com.partenaires.resanet.hotel.HotelEndPoint" >
+        <cxf:outInterceptors>
+            <bean class="com.resanet.esb.tp8.utils.EnableCORSInterceptor"/>
+            <bean class="org.apache.cxf.interceptor.LoggingOutInterceptor"/>
+        </cxf:outInterceptors>
+    </cxf:cxfEndpoint>
+
+    <cxf:cxfEndpoint id="servicePartenaireEndpoint"
+                     address="http://localhost:11000/partenaire"
+                     serviceClass="com.partenaires.resanet.hotel.HotelEndPoint" >
+        <cxf:inInterceptors>
+            <bean class="org.apache.cxf.interceptor.LoggingInInterceptor"/>
+        </cxf:inInterceptors>
+        <cxf:outInterceptors>
+            <bean class="org.apache.cxf.interceptor.LoggingOutInterceptor"/>
+        </cxf:outInterceptors>
+    </cxf:cxfEndpoint>
+
+    <bean id="routeBuilderService" class="com.resanet.esb.tp8.RouterPojoWS"/>
+
+    <camelContext streamCache="true" xmlns="http://camel.apache.org/schema/spring">
+        <routeBuilder ref="routeBuilderService" />
+    </camelContext>
+
+</beans>

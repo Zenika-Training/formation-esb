@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+	<bean id="destinationChooser" class="com.zenika.resanet.tp6.beans.DestinationChooser">
+		<property name="destinationReponsePaire" value="jms:queue:paire" />
+		<property name="destinationReponseImpaire" value="jms:queue:impaire" />
+	</bean>
+
+	<bean id="bean0" class="com.zenika.resanet.tp6.beans.Bean0" />
+	<bean id="bean1" class="com.zenika.resanet.tp6.beans.Bean1" />
+	<bean id="bean2" class="com.zenika.resanet.tp6.beans.Bean2" />
+
+</beans>
+

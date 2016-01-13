@@ -1,0 +1,78 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.zenika.esb</groupId>
+	<artifactId>tp-parent</artifactId>
+	<version>1.0.0</version>
+	<packaging>pom</packaging>
+
+
+    <modules>
+        <module>tp1</module>
+        <module>tp1-solution</module>
+        <module>tp2</module>
+        <module>tp2-solution</module>
+        <module>tp3</module>
+        <module>tp3-solution</module>
+        <module>tp4</module>
+        <module>tp4-solution</module>
+        <module>tp5</module>
+        <module>tp5-solution</module>
+        <module>tp6</module>
+        <module>tp6-solution</module>
+        <module>tp7</module>
+        <module>tp7-solution</module>
+        <module>tp8</module>
+        <module>tp8-service-partenaire</module>
+        <module>tp8-solution</module>
+        <module>tp9</module>
+        <module>tp9-solution</module>
+        <module>tp10</module>
+        <module>tp10-solution</module>
+        <module>tp11</module>
+        <module>tp11-solution</module>
+        <module>tp12</module>
+        <module>tp12-solution</module>
+    </modules>
+
+
+	<properties>
+		<camel.version>2.16.1</camel.version>
+        <slf4j.version>1.6.1</slf4j.version>
+        <junit.version>4.10</junit.version>
+        <maven-bundle-plugin.version>2.3.5</maven-bundle-plugin.version>
+        <maven-jaxb2-plugin.version>0.8.0</maven-jaxb2-plugin.version>
+        <logback.version>1.0.9</logback.version>
+        <spring.version>3.0.7.RELEASE</spring.version>
+        <activemq.version>5.12.1</activemq.version>
+        <hsqldb.version>1.8.0.10</hsqldb.version>
+        <cxf.version>3.1.4</cxf.version>
+        <xbean.version>3.4</xbean.version>
+        <maven-compiler-plugin.version>2.3.2</maven-compiler-plugin.version>
+        <maven-jar-plugin.version>2.3.2</maven-jar-plugin.version>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-test</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>${maven-compiler-plugin.version}</version>
+				<configuration>
+					<source>1.6</source>
+					<target>1.6</target>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>

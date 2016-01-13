@@ -1,0 +1,18 @@
+<configuration>
+
+	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<pattern>%d | %-5.5p | %-16.16t | %-32.32c{1} | %m%n</pattern>
+		</encoder>
+	</appender>
+
+	<logger name="org.springframework" level="WARN" />
+    <logger name="org.apache.camel" level="WARN" />
+	<logger name="ch.qos.logback" level="OFF" />
+    <logger name="com.zenika" level="DEBUG" />
+
+	<root level="info">
+		<appender-ref ref="STDOUT" />
+	</root>
+
+</configuration>

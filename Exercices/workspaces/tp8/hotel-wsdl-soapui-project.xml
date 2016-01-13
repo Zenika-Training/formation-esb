@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project name="hotel?wsdl" resourceRoot="" soapui-version="4.0.1" abortOnError="false" runType="SEQUENTIAL" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" wsaVersion="NONE" name="HotelEndPointServiceSoapBinding" type="wsdl" bindingName="{http://www.resanet.partenaires.com/hotel}HotelEndPointServiceSoapBinding" soapVersion="1_1" anonymous="optional" definition="http://localhost:8181/cxf/services/hotel?wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="http://localhost:8181/cxf/services/hotel?wsdl"><con:part><con:url>http://localhost:8181/cxf/services/hotel?wsdl</con:url><con:content><![CDATA[<wsdl:definitions name="HotelEndPointService" targetNamespace="http://www.resanet.partenaires.com/hotel" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://www.resanet.partenaires.com/hotel" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <wsdl:types>
+    <xs:schema elementFormDefault="qualified" targetNamespace="http://www.resanet.partenaires.com/hotel" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="rechercherHotelFault" type="xs:string"/>
+      <xs:element name="rechercherHotelRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="reference" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="rechercherHotelResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="hotel" type="tns:Hotel"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:complexType name="Hotel">
+        <xs:sequence>
+          <xs:element name="nom" type="xs:string"/>
+          <xs:element name="ville" type="xs:string"/>
+          <xs:element name="nbEtoiles" type="xs:int"/>
+        </xs:sequence>
+      </xs:complexType>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="rechercherHotel">
+    <wsdl:part element="tns:rechercherHotelRequest" name="in"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="rechercherHotelResponse">
+    <wsdl:part element="tns:rechercherHotelResponse" name="out"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="RechercherHotelFault">
+    <wsdl:part element="tns:rechercherHotelFault" name="RechercherHotelFault"></wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="hotelEndPoint">
+    <wsdl:operation name="rechercherHotel">
+      <wsdl:input message="tns:rechercherHotel" name="rechercherHotel"></wsdl:input>
+      <wsdl:output message="tns:rechercherHotelResponse" name="rechercherHotelResponse"></wsdl:output>
+      <wsdl:fault message="tns:RechercherHotelFault" name="RechercherHotelFault"></wsdl:fault>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="HotelEndPointServiceSoapBinding" type="tns:hotelEndPoint">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="rechercherHotel">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="rechercherHotel">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="rechercherHotelResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="RechercherHotelFault">
+        <soap:fault name="RechercherHotelFault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="HotelEndPointService">
+    <wsdl:port binding="tns:HotelEndPointServiceSoapBinding" name="hotelEndPointPort">
+      <soap:address location="http://localhost:8181/cxf/services/hotel"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://localhost:8181/cxf/services/hotel</con:endpoint><con:endpoint>http://localhost:11000/partenaire</con:endpoint><con:endpoint>http://PC-SEB:11000/mockHotelEndPointServiceSoapBinding</con:endpoint><con:endpoint>http://PC-SEB:11000/partenaire</con:endpoint></con:endpoints><con:operation isOneWay="false" action="" name="rechercherHotel" bindingOperationName="rechercherHotel" type="Request-Response" outputName="rechercherHotelResponse" inputName="rechercherHotel" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8181/cxf/services/hotel</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:hot="http://www.resanet.partenaires.com/hotel">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <hot:rechercherHotelRequest>
+         <hot:reference>EXT0002</hot:reference>
+      </hot:rechercherHotelRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.resanet.partenaires.com/hotel/hotelEndPoint/rechercherHotel"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:mockService port="11000" path="/partenaire" host="PC-SEB" name="HotelEndPointServiceSoapBinding MockService"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.mock.WsdlMockService@require-soap-action">false</con:setting></con:settings><con:mockOperation name="rechercherHotel" interface="HotelEndPointServiceSoapBinding" operation="rechercherHotel"><con:settings/><con:dispatchStyle>QUERY_MATCH</con:dispatchStyle><con:defaultResponse>EXT0001</con:defaultResponse><con:response name="EXT0001" encoding="UTF-8" outgoingWss="" compression="&lt;none>"><con:settings/><con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:hot="http://www.resanet.partenaires.com/hotel">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <hot:rechercherHotelResponse>
+         <hot:hotel>
+            <hot:nom>Palace Hotel</hot:nom>
+            <hot:ville>Lyon</hot:ville>
+            <hot:nbEtoiles>4</hot:nbEtoiles>
+         </hot:hotel>
+      </hot:rechercherHotelResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.resanet.partenaires.com/hotel/hotelEndPoint/rechercherHotelResponse"/></con:response><con:response name="EXT0002" encoding="UTF-8" outgoingWss="" compression="&lt;none>"><con:settings/><con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:hot="http://www.resanet.partenaires.com/hotel">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <hot:rechercherHotelResponse>
+         <hot:hotel>
+            <hot:nom>Palace Hotel</hot:nom>
+            <hot:ville>Lyon</hot:ville>
+            <hot:nbEtoiles>4</hot:nbEtoiles>
+         </hot:hotel>
+      </hot:rechercherHotelResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.resanet.partenaires.com/hotel/hotelEndPoint/rechercherHotelResponse"/></con:response><con:dispatchConfig xsi:type="con:MockOperationQueryMatchDispatch" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:query><con:name>EXT0001</con:name><con:query>declare namespace hot='http://www.resanet.partenaires.com/hotel';
+declare namespace soapenv='http://schemas.xmlsoap.org/soap/envelope/';
+//hot:rechercherHotelRequest/reference/text()</con:query><con:match>'EXT0001'</con:match><con:response>Response 1</con:response></con:query><con:query><con:name>EXT0002</con:name><con:query>declare namespace hot='http://www.resanet.partenaires.com/hotel';
+declare namespace soapenv='http://schemas.xmlsoap.org/soap/envelope/';
+//hot:rechercherHotelRequest/reference/text()</con:query><con:match>'EXT0002'</con:match><con:response>Response 1</con:response></con:query></con:dispatchConfig></con:mockOperation><con:properties/></con:mockService><con:properties/><con:wssContainer/></con:soapui-project>
