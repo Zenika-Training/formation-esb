@@ -1,0 +1,13 @@
+<catalogue xmlns="http://catalogue.resanet.com">
+	<produit>
+		<nom>ProduitA</nom>
+		<date>2011-12-05</date>
+		<quantite>4</quantite>
+	</produit>
+	<produit>
+		<nom>ProduitB</nom>
+		<date>2012-01-12</date>
+		<quantite>9</quantite>
+	</produit>
+</catalogue>
+

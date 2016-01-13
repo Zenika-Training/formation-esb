@@ -1,0 +1,32 @@
+<beans xsi:schemaLocation=" http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
+ http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd
+ http://activemq.apache.org/schema/core http://activemq.apache.org/schema/core/activemq-core.xsd"
+       xmlns:broker="http://activemq.apache.org/schema/core"
+       xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <camelContext id="camel" xmlns="http://camel.apache.org/schema/spring"/>
+    <bean id="jmsConfig" class="org.apache.camel.component.jms.JmsConfiguration">
+        <property name="connectionFactory" ref="jmsConnectionFactory"/>
+        <property name="transactionManager" ref="jmsTransactionManager"/>
+        <property name="transacted" value="true"/>
+    </bean>
+    <bean id="activemq" class="org.apache.camel.component.jms.JmsComponent">
+        <property name="configuration" ref="jmsConfig"/>
+    </bean>
+    <bean id="PROPAGATION_REQUIRED" class="org.springframework.transaction.support.TransactionTemplate">
+        <property name="transactionManager" ref="jmsTransactionManager"/>
+    </bean>
+    <bean id="jmsTransactionManager" class="org.springframework.jms.connection.JmsTransactionManager">
+        <property name="connectionFactory" ref="jmsConnectionFactory"/>
+    </bean>
+    <bean id="jmsConnectionFactory" class="org.apache.activemq.ActiveMQConnectionFactory">
+        <property name="brokerURL" value="tcp://localhost:61617"/>
+    </bean>
+
+    <!-- setup a local JMS Broker for testing purpose -->
+    <broker:broker useJmx="false" persistent="false" brokerName="localhost">
+        <broker:transportConnectors>
+            <broker:transportConnector uri="tcp://localhost:61617"/>
+        </broker:transportConnectors>
+    </broker:broker>
+
+</beans>

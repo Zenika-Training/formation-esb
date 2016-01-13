@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<requete xmlns="http://esb.resanet.com">
+	<message1>
+		<camel>123</camel>
+	</message1>
+	<message2>
+		<smx>456</smx>
+	</message2>
+	<message3>
+		<amq>789</amq>
+	</message3>
+</requete>

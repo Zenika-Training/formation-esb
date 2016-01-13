@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+
+						http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd">
+
+    <bean id="trans" class="com.resanet.esb.tp11.routes.TransactionExampleRoute"/>
+
+    <camelContext xmlns="http://camel.apache.org/schema/spring">
+        <routeBuilder ref="trans"/>
+    </camelContext>
+
+    <!-- TX configuration -->
+
+    <bean id="transactionManager" class="org.springframework.jms.connection.JmsTransactionManager">
+        <property name="connectionFactory" ref="jmsConnectionFactory"/>
+    </bean>
+
+    <bean id="PROPAGATION_REQUIRED" class="org.apache.camel.spring.spi.SpringTransactionPolicy">
+        <property name="transactionManager" ref="transactionManager"/>
+        <property name="propagationBehaviorName" value="PROPAGATION_REQUIRED"/>
+    </bean>
+
+    <!-- JMS configuration -->
+    <bean id="jmsConnectionFactory" class="org.apache.activemq.ActiveMQConnectionFactory">
+        <property name="brokerURL" value="tcp://localhost:61616"/>
+        <property name="redeliveryPolicy">
+            <bean class="org.apache.activemq.RedeliveryPolicy">
+                <property name="maximumRedeliveries" value="0"/>
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="activemqTx" class="org.apache.activemq.camel.component.ActiveMQComponent">
+        <property name="connectionFactory" ref="jmsConnectionFactory"/>
+        <property name="transacted" value="true"/>
+        <property name="transactionManager" ref="transactionManager"/>
+    </bean>
+
+</beans>

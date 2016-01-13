@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:osgi="http://www.springframework.org/schema/osgi"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd 
+						http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd
+						 http://www.springframework.org/schema/osgi	http://www.springframework.org/schema/osgi/spring-osgi.xsd">
+
+	<camelContext xmlns="http://camel.apache.org/schema/spring">
+		<package>com.resanet.camel_su.routes</package>
+	</camelContext>
+	
+	<bean id="jms" class="org.apache.camel.component.jms.JmsComponent">
+		<property name="connectionFactory" ref="pooledConnectionFactory"/>
+	</bean>
+	
+	
+	<!--
+		Récupération du pooledConnectionFactory à ActiveMQ
+	-->
+	<osgi:reference id="pooledConnectionFactory" interface="javax.jms.ConnectionFactory" />
+ 
+
+</beans>

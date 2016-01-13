@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+	  http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd">
+
+
+    <bean id="bean0" class="com.zenika.resanet.tp6.beans.Bean0" />
+    <bean id="bean1" class="com.zenika.resanet.tp6.beans.Bean1" />
+    <bean id="bean2" class="com.zenika.resanet.tp6.beans.Bean2" />
+
+    <bean id="splitter" class="com.zenika.resanet.tp6.routes.Splitter"/>
+
+    <camelContext id="camel" streamCache="true" xmlns="http://camel.apache.org/schema/spring">
+        <routeBuilder ref="splitter"/>
+    </camelContext>
+
+</beans>
+

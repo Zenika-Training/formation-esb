@@ -1,0 +1,13 @@
+<reservation xmlns="http://resa.resanet.com">
+	<resa>
+		<produit>ProduitA</produit>
+		<date>2011-12-05</date>
+		<quantite>4</quantite>
+	</resa>
+	<resa>
+		<produit>ProduitB</produit>
+		<date>2012-01-12</date>
+		<quantite>9</quantite>
+	</resa>
+</reservation>
+

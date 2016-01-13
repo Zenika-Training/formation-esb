@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:esb="http://esb.resanet.com" targetNamespace="http://esb.resanet.com"
+	elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:element name="reservation">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="idReservation" type="xs:string" />
+				<xs:element name="dateReservation" type="xs:dateTime" />
+				<xs:element name="produit" maxOccurs="unbounded">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="codeProduit" type="xs:string" />
+							<xs:element name="codeTarifaire" type="xs:string" />
+							<xs:element name="quantite" type="xs:int" />
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

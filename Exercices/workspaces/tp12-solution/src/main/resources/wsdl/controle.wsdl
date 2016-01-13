@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+	xmlns:tns="http://www.resanet.com/informations" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="DetourService"
+	targetNamespace="http://www.resanet.com/informations">
+
+	<!-- TYPES -->
+	<wsdl:types>
+		<xsd:schema targetNamespace="http://www.resanet.com/informations">
+			<xsd:include schemaLocation="controle.xsd" />
+		</xsd:schema>
+	</wsdl:types>
+
+	<!-- MESSAGES -->
+	<wsdl:message name="detour">
+		<wsdl:part name="parameters" element="tns:detour" />
+	</wsdl:message>
+
+	<!-- PORT TYPE -->
+	<wsdl:portType name="detourPortType">
+
+		<wsdl:operation name="detour">
+			<wsdl:input message="tns:detour"></wsdl:input>
+		</wsdl:operation>
+	</wsdl:portType>	<!-- BINDING -->
+	<wsdl:binding name="detourService_rpc_soap11" type="tns:detourPortType">
+		<soap:binding style="document"
+			transport="http://schemas.xmlsoap.org/soap/http" />
+		<wsdl:operation name="detour">
+			<soap:operation soapAction="" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+		</wsdl:operation>
+	</wsdl:binding>
+
+	<!-- SERVICE -->
+	<wsdl:service name="detourService">
+		<wsdl:port binding="tns:detourService_rpc_soap11" name="detourServicePort">
+			<soap:address location="http://localhost:8080/services/detour" />
+		</wsdl:port>
+	</wsdl:service>
+</wsdl:definitions>
