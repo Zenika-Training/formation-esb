@@ -13,7 +13,8 @@ public class TransactionExampleRoute extends RouteBuilder {
         from("activemqTx:queue:transaction.incoming.one")
                 .transacted("PROPAGATION_REQUIRED")
                 .throwException(new Exception("Erreur de traitement !!!"))
-                .to("activemqTx:queue:transaction.outgoing.one");
+                .to("activemqTx:queue:transaction.outgoing.one")
+                .to(LOG);
 
 
 
