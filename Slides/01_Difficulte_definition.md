@@ -1,4 +1,4 @@
-# Syntaxe</br>Les bases
+# De la difficulté de définir <br/>un ESB
 
 <!-- .slide: class="page-title" -->
 

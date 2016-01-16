@@ -1,4 +1,4 @@
-# Exemple de code
+# Comprendre les principes fondamentaux <br/>d'un ESB
 
 <!-- .slide: class="page-title" -->
 

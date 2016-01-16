@@ -1,4 +1,4 @@
-# Les animations
+# Apache ServiceMix
 
 <!-- .slide: class="page-title" -->
 

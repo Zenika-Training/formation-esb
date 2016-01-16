@@ -1,4 +1,4 @@
-# Titre de la formation
+# Agenda
 
 <!-- .slide: class="page-title" -->
 

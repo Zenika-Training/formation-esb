@@ -1,4 +1,4 @@
-# Les animations
+# Apache ActiveMq
 
 <!-- .slide: class="page-title" -->
 

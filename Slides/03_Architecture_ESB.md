@@ -1,4 +1,4 @@
-# Positionnement des images
+# L'architecture d'un ESB
 
 <!-- .slide: class="page-title" -->
 

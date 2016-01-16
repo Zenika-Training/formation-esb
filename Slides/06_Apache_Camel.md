@@ -1,4 +1,4 @@
-# Les animations
+# Apache Camel
 
 <!-- .slide: class="page-title" -->
 
@@ -24,139 +24,198 @@
 
 
 
-## Fragments
+## Contenu
 
-Les items s'affichent au clic. Lors de l'impression, tous les items sont affichés.
-
-Notez que la flèche du bas est transparente lorsqu'il y a des "fragments".
-
-<!-- .element class="fragment" -->
-- Item 1
-
-<!-- .element class="fragment" -->
-- Item 2
-
-<!-- .element class="fragment" -->
-- Item 3
-
-<!-- .element class="fragment" -->
-- Item 4
+- Présentation du framework Camel
+- Configuration
+- Exchange, Messages, Headers, Id, ... les objets de Camel
+- Tests
+- Intégration à Apache ServiceMix
 
 
+## Présentation du framework Camel
 
-## Fragments
+- Apache Camel
 
-Les items s'affichent au clic. 
+- Implémentation des EIP 
 
-Afficher plusieurs éléments en même temps avec `data-fragment-index`.
+- Définition des routes
+	- DSL (recommandé)
+	- XML
 
-<!-- .element class="fragment" data-fragment-index="1" -->
-- Item 1
+- Framework
+	- Pas un conteneur
+	- Pas un serveur
 
-<!-- .element class="fragment" data-fragment-index="1" -->
-- Item 2
-
-<!-- .element class="fragment" data-fragment-index="2" -->
-- Item 3
-
-<!-- .element class="fragment" data-fragment-index="2" -->
-- Item 4
-
+- Peut être intégré
+	- ServiceMix
+	- ActiveMQ
 
 
-## Fragments & Animations
+## Présentation du framework Camel
 
-De type Arrivée ou Sortie :
+10 bonnes raisons d'adopter un chameau :
 
-<!-- .element class="fragment fade-in" -->
-- fade-in
+- Excellent framework d'intégration
+- Open source et gratuit  (Apache Software Foundation)
+- Support de 50 EIP
+- Support de plus de 70 types de Endpoint (connecteurs)
+- Création de règles très intuitives
+- Basé sur le framework Spring
+- Léger et puissant
+- Très bonne intégration à ServiceMix & ActiveMQ
+- Excellente documentation
+- Support de 19 langages (pour expressions et prédicats)
 
-<!-- .element class="fragment fade-out" -->
-- fade-out
-
-<!-- .element class="fragment shrink" -->
-- shrink
-
-<!-- .element class="fragment roll-in" -->
-- roll-in
-
-Sur des éléments :
-
-<!-- .element class="fragment highlight-current-blue" -->
-- highlight-current-blue
-
-<!-- .element class="fragment highlight-green" -->
-- highlight-green
-
-<!-- .element class="fragment highlight-red" -->
-- highlight-red
-
-<!-- .element class="fragment current-visible" -->
-- current-visible
+TODO by Olivier : vérifier le nombre d'EIP, endpoints, langages
 
 
 
-## Alertes
-
-<!-- .element class="alert alert-info"-->
-Info / `class="alert alert-info"`
-
-<!-- .element class="alert alert-success"-->
-Succès / `class="alert alert-succes"`
-
-<!-- .element class="alert alert-warning"-->
-Warning / `class="alert alert-warning"`
-
-<!-- .element class="alert alert-danger"-->
-Danger / `class="alert alert-danger"`
+<!-- .slide: class="page-questions" -->
 
 
 
-## Alertes avec positionnement absolu
+## Apache Camel et Spring
 
-<!-- .element class="alert alert-info" style="position: absolute; top: 125px; left: 10px; width: 200px;"-->
-Info
+- Camel étend Spring
 
-<!-- .element class="alert alert-success" style="position: absolute; top: 125px; right: 10px; width: 200px;"-->
-Succès
+- La configuration XML de Camel est basée sur Spring
 
-<!-- .element class="alert alert-warning" style="position: absolute; top: 50%; left: 20%; width: 250px;"-->
-Warning
+- Camel utilise le support Spring pour :
+	- La gestion des transactions
+	(TODO : check mais il y a aussi la dépendance d'injections et la gestion de propriétés)
+- Composants Spring accessibles dans Camel
 
-<!-- .element class="alert alert-danger" style="position: absolute; top: 50%; left: 60%; width: 150px;"-->
-Danger
-
-
-
-
-## Ajouter du HTML 
-
-Il est possible d'inclure directement du code HTML dans le markdown.
-
-<div style="background-color: black; color: white; padding: 5px 20px" class="code">
-  &gt; git commit -m "init"<br>
-</div>
-
-<br>
-
-Avec le code HTML :
 ```xml
-<div 
-    class="code"  
-    style="background-color: 
-        black; color: white; 
-        padding: 5px 20px">
-  &gt; git commit -m "init"<br>
-</div>
+
+	<beans xmlns="http://www.springframework.org/schema/beans">
+		
+		<camelContext id="camel"
+			xmlns="http://camel.apache.org/schema/spring">
+			<package>com.resanet.camel</package>
+		</camelContext>
+	
+	</beans>
+```	
+
+
+
+## Apache Camel et Spring
+
+
+
+
+
+
+## Fonctionnement de Camel
+
+Camel permet de relier des Endpoints via des routes :
+- Statiques
+- Dynamiques
+- Simples
+- Complexes
+
+Camel permet de définir des endpoints : 
+- Associés à des ressources
+- Physiques ou logiques
+
+Les endpoints et les routes sont définis dans le CamelContext (moteur Camel)
+
+
+
+## Fonctionnement de Camel
+
+Exemple de route DSL Java & Xml
+
+```java
+	from("direct:orig").to("direct:dest");
+```
+
+```xml
+	<from uri="direct:orig" />
+	<to uri="direct:dest" />
+```
+
+- Définition et création du endpoint « direct:orig »
+- Permet de relier les endpoints logiques Camel « direct:orig » au endpoint « direct:dest »
+- Représente une route à part entière
+
+		
+## Fonctionnement de Camel
+
+- Définir les routes en DSL
+- Hériter de la classe org.apache.camel.builder.RouteBuilder
+- Redéfinir la méthode abstraite configure()
+- Un point d'entrée unique from() pour chaque route
+
+```java
+	
+	import org.apache.camel.builder.RouteBuilder;
+	
+	public class MaRoute extends RouteBuilder {
+	
+			@Override
+			public void configure() throws Exception {
+				from("direct:origine")
+				.to("direct:destination");
+			}
+	}
+	
 ```
 
 
 
-<!-- .slide: class="page-title" -->
+## Fonctionnement de Camel
+
+Création des routes : 
+
+- L'appel de la méthode from() (qui doit être unique au sein d'une route) retourne un « processor type »
+
+- Ce processor est l'action suivante qui doit être effectuée pour poursuivre l'exécution de la route
+
+- Différents processors existent par défaut (to, filter, etc.)
+
+- Il est possible de définir ses propres processors
+
+
+## Fonctionnement de Camel
+
+TODO parler des enpoints de type direct, SEDA, ...
 
 
 
-<!-- .slide: class="page-tp4" -->
+
+<!-- .slide: class="page-questions" -->
+
+
+
+
+## Possibilités de configuration
+
+... si on a pratiqué le métier après 2004 et qu'on sait ce qu'est une annotation
+
+TODO : issue #
+
+XML
+Spring
+
+
+
+<!-- .slide: class="page-questions" -->
+
+
+
+## Exchange, Messages, Headers, Id, ... les objets de Camel
+
+Présenter les possiblilités d'accéder à :
+- le contenu des Exchanges
+- Message, Body, Headers, id
+- les Logs
+
+
+
+<!-- .slide: class="page-questions" -->
+
 
 
 
@@ -449,7 +508,7 @@ Notes :
 
 
 
-## 4 – L'utilisation d'aspects AdviceWith
+## L'utilisation d'aspects AdviceWith
 
 - Avantages :
   - Changement des endpoints physiques par des direct ou des mocks
@@ -608,6 +667,34 @@ Notes :
 
 
 
-## TP 6
+## Intégration de Camel à ServiceMix
 
-<!-- .slide: class="page-tp6" -->
+Configuration et utilisation de Camel : 
+- Déploiement d'un fichier xml avec le DSL Xml
+- Création d'un jar contenant les classes Java Camel et un fichier camel-context.xml
+- Déclaration du package Java où sont situées les routes
+
+```xml
+
+	<beans xmlns="http://www.springframework.org/schema/beans">
+		
+		<camelContext id="camel"
+			xmlns="http://camel.apache.org/schema/spring">
+			<package>com.resanet.camel</package>
+		</camelContext>
+	
+	</beans>
+```
+
+## Intégration de Camel à ServiceMix
+
+Todo détailler d'avantage cela suicite pleins de questions inutiles
+- Comment on configure un Bundle ...
+- Le plugin Eclipse
+- ...
+
+
+
+## TP 2
+
+<!-- .slide: class="page-tp2" -->

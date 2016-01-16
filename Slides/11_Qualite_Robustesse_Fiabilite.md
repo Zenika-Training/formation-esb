@@ -1,4 +1,4 @@
-# Syntaxe</br>Les bases
+# Déployer un environnement de qualité, robuste et fiable
 
 <!-- .slide: class="page-title" -->
 

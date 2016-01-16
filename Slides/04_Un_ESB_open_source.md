@@ -1,4 +1,4 @@
-# Les animations
+# Un ESB Open Source
 
 <!-- .slide: class="page-title" -->
 

@@ -1,4 +1,4 @@
-# Syntaxe</br>Les bases
+# Connectivité
 
 <!-- .slide: class="page-title" -->
 
