@@ -8,7 +8,7 @@
 
 <!-- .slide: id="master-toc" class="toc" -->
 
-- [00 – Plan](#/0)
+- [00 – Agenda](#/0)
 - [01 – De la difficulté de définir un ESB](#/1)
 - [02 – Comprendre les principes fondamentaux d'un ESB](#/2)
 - [03 – L'architecture d'un ESB](#/3)
