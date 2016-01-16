@@ -8,7 +8,7 @@
             http://camel.apache.org/schema/spring/camel-spring.xsd">
 	   
 	<camelContext xmlns="http://camel.apache.org/schema/spring">
-		<package>com.zenika.resanet.tp2</package>
+		<!-- TODO 1 : ajouter le package com.zenika.resanet.tp2 pour qu'il soit scanné par camel -->
 	</camelContext>
  
 </beans>
