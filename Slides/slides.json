@@ -1,7 +1,15 @@
 [
   "00_agenda.md",
   "01_Difficulte_definition.md",
-  "02_code.md",
-  "03_images.md",
-  "04_Un_ESB_open_source.md"
+  "02_Principes_ESB.md",
+  "03_Architecture_ESB.md",
+  "04_Un_ESB_open_source.md",
+  "05_Apache_ServiceMix.md",
+  "06_Apache_Camel.md",
+  "07_Apache_ActiveMq.md",
+  "08_Connectivite.md",
+  "09_Routage_Transformations_integration.md",
+  "10_Web_Services.md",
+  "11_Qualite_Robustesse_Fiabilite.md",
+  "12_Monitoring.md"
 ]
