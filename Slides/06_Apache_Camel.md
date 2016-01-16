@@ -695,6 +695,10 @@ Todo détailler d'avantage cela suicite pleins de questions inutiles
 
 
 
+<!-- .slide: class="page-questions" -->
+
+
+
 ## TP 2
 
 <!-- .slide: class="page-tp2" -->
