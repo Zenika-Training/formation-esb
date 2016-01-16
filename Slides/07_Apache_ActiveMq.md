@@ -8,93 +8,12 @@
 
 <!-- .slide: class="toc" -->
 
-
-- [00 – Plan](#/0)
-- [01 – De la difficulté de définir un ESB](#/1)
-- [02 – Comprendre les principes fondamentaux d'un ESB](#/2)
-- [03 – L'architecture d'un ESB](#/3)
-- **[04 – Un ESB Open Source](#/4 "Un ESB Open Source")**
-- [05 – Camel le framework d'integration](#/5)
-- [06 – Connectivité](#/6)
-- [07 – Routage, transformations et intégration](#/7)
-- [08 – Web Services](#/8)
-- [09 – Déployer un environnement de qualité, robuste et fiable](#/9)
-- [10 – Surveiller l'ESB : Monitoring métier et technique](#/10)
+- [Syntaxe de base](#/1)
+- [Code et tableaux](#/2)
+- [Positionnement des images](#/3)
+- **[Animations et syntaxe avancée](#/4)**
 
 
-
-## Contenu
-
-- La combinaison : ServiceMix, ActiveMQ et Camel
-- Les avantages des ESB open source
-- ServiceMix – Un conteneur de services, standard et flexible
-- ActiveMQ – Le serveur de messages (MOM)
-- Camel – Implémentation des EIP (Enterprise Integration Patterns)
-- Karaf – Conteneur OSGi 
-
-
-
-## ServiceMix, ActiveMQ et Camel
-
-L'ESB est un ensemble de 3 principaux composants :
-
-- Un conteneur de services léger
-- Un serveur de messages
-- Des services, des endpoints, des éléments de routage
-
-ServiceMix est un conteneur de service léger
-ActiveMQ est un serveur de messages compatible JMS
-Camel est un framework d'intégration implémentant les EIP
-
-La réunion des trois éléments forme donc un ESB.
-
-
-
-## Les avantages des ESB open source
-
-Un ESB open source doit avoir les caractéristiques suivantes :
-- Licence (Apache, GPL)
-- Gratuit
-- Code source disponible et public
-
-Une communauté très présente et très réactive :
-- + de 3000 mails/mois sur les mailing lists (SM, AMQ, CML)
-- Les commiters et mainteneurs impliqués directement
-
-Outil de suivi de bugs public (JIRA)
-
-
-## Historique 
-
-TODO reprendre depuis la version 3
-
-
-
-
-## OSGi : Définition
-
-**« Une plate-forme de déploiement et d’exécution de services Java »**
-
-
-
-## OSGi : Objectifs
-
-- Modularité des applications
-	- Meilleur découpage des applications
-	- Isolation des modules
-	- Chargement / déchargement de code dynamique
-	- Déploiement dynamique d’applications sans interruption de la plate-forme
-	- Résolution des dépendances versionnées de code
-
-- Architecture orientée service
-	- Couplage faible
-	- Configuration dynamique des applications
-
-- Solution aux problèmes de classloaders
-
-
-
-## 
 
 ## Fragments
 
