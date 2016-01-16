@@ -24,130 +24,250 @@
 
 
 
-## Paragraphe
+## Le monitoring dans un contexte distribué
 
-Dans un paragraphe, les retours chariots simples
-ne sont pas pris en compte. Pour commencer un nouveau paragraphe, il faut
-les séparer par une ligne vide (2 retours chariots). 
+- Les patterns de supervision système – wire tap, message store
+- Administrer Camel avec JMX
 
-Nouveau paragraphe.
-
-Pour terminer la slide, insérer 3 lignes vides.
-
-
-
-## Mise en forme
-
-- Un titre de chapitre commence par **'\#'**, avec éventuellement un **'&lt;br&gt;'** pour ajouter un sous-titre
-- Un titre de slide commence par **'\#\#'**
-- Entourer avec **'\*'** pour mettre le *texte en évidence*
-- Entourer avec **'\*\*'** pour mettre le **texte encore plus en évidence**
-- Entourer avec **'\~\~'** pour mettre le ~~texte en barré~~
-- Commencer un paragraphe par **'\>'** pour faire une citation
-
-> Premier paragraphe de la citation
-> 
-> Second paragraphe
-
-
-
-## Caractères spéciaux
-
-- Selon l'emplacement, il peut être nécessaire d'échapper les caractères suivants avec un **'\\'** :
-  - Les symboles : \\ \` \*  \_ 
-  - Les parenthèses : \{ \} \[ \] \( \) 
-  - Les ponctuations : \#  \. \!
-  - Les signes : \+ \- 
-
-
-
-
-## Liste simple
-
-- Item 1
-- Item 2
-- Item 3
-- Item 4
-- Item 5
-
-
-
-## Liste numérotée
-
-1. Item 1
-2. Item 2
-3. Item 3
-4. Item 4
-5. Item 5
-
-
-
-## Liste avancée
-
-- Item 1 *sur 3 niveaux*
-  - Item 1.1
-      - Item 1.1.1
-  - Item 1.2
-- Item 2 *avec du texte*
-  
-  1er paragraphe lié à l'item 2.
-
-  2nd paragraphe lié à l'item 2.
-  
-- Item 3
-
-
-
-## CSS Personnalisé
-
-- Utiliser la feuille CSS spécique à chaque formation [ressources/custom.css](ressources/custom.css)
-
-<!-- .element: class="blue" -->
-En bleu
-
-```
-<!-- .element: class="blue" -->
-En bleu
-```
-<!-- .element class="alert alert-warning"-->
-**A utiliser avec parcimonie!** Essentiellement, pour le multi-colonne, le positionnement des illustrations...
-
-
-
-## Notes formateurs
-
-- Pour ajouter des notes formateurs, ajouter un paragraghe commencant par `'Notes :'`.
-- Appuyez sur la touche `'s'` pour activer le mode présentateur et voir les notes formateurs.
+Contenu
 
 Notes :
-Commentaire pour le formateur avec une liste d'élements.
-
-- Note formateur 1
-- Note formateur 2
 
 
 
-## Liens
+## Monitorer une application est complexe
 
-- Lien simple : http://zenika.com
-- Lien avec texte : [Site de Zenika](http://zenika.com)
-- Lien avec texte et titre : [Site de Zenika](http://zenika.com "le site web de zenika")
-- Adresse email : <info@zenika.com>
+- Goulet d'étranglement
+- Erreurs
+- Arrêts
+
+- Monitorer une application distribuée accroît la complexité de cette tâche
+  - « Architect's dream, Developer's nightmare » - M. Fowler
+  - Un producteur ne peut savoir qui sont les consommateurs → « Prévoir l'imprévisible »
+  - Asynchronisme
+
+- Nécessité de mettre en place des systèmes de monitoring et d'analyse adaptés aux systèmes distribués
+
+Le monitoring d'un système distribué
+
+Notes :
 
 
 
-## Pages spéciales
+## Le bus de contrôle
 
-Pour insérer une page spéciale, ajouter dans un slide avec ou sans titre, le commentaire html suivant avec la classe css souhaitée : 
+![](ressources/images/camel_08_monitoring-1000020100000080000000806173FCBC.png)
 
-```html
-<!-- .slide: class="page-xxx" -->
+Bus de contrôle
+
+Notes :
+
+
+
+## Fonctionnalités d'un bus de contrôle
+
+- Configuration : chaque composant peut être configuré (si possible à la volée) depuis le bus de contrôle
+- « Heartbeat » : chaque composant devrait envoyer un message périodique indiquant qu'il fonctionne correctement
+- Messages de test : chaque composant offre la possibilité de prendre en charge des messages de test afin de vérifier qu'il traite correctement les informations envoyées
+
+Notes :
+
+
+
+## EIP : Message de test
+
+![](ressources/images/camel_08_monitoring-100002010000008000000080C5CF4130.png)
+
+Notes :
+
+
+
+## Fonctionnalités d'un bus de contrôle
+
+- Exceptions : L'ensemble des erreurs doivent être renvoyées au bus de contrôle afin de pouvoir régler d'éventuels problèmes
+- Statistiques : Afin de vérifier le bon fonctionnement du système, il est nécessaire de collecter des statistiques (débit, temps de traitement …)
+- Console : Une console centrale permet de contrôler les fonctionnalités décrites
+
+Notes :
+
+
+
+## JMX : le cœur de bus de contrôle
+
+- Camel expose ses composants internes via JMX
+- JMX permet d'accéder aux informations de(s)
+  - Endpoints
+  - Contexte
+  - Routes
+
+- JMX permet de démarrer/arrêter des routes Camel
+- JMX permet d'accéder aux statistiques de Camel
+- Il est possible d'accéder à l'ensemble de ces informations depuis un client Java (exemple : JConsole) ou depuis du code Java
+
+Notes :
+
+
+
+## Composant ControlBus
+
+- Action : start, stop, status, suspend, resume, stats
+
+```java
+from("direct:startMaRoute")
+  .to("controlbus:route?routeId=maRoute&action=start")
 ```
 
-Liste des pages (classes css) existantes :
+Notes :
 
-- page de questions : *"page-questions"*
-- page de tp : *"page-tp1"*, *"page-tp2"*, ...
+
+
+## Exemple de client JMX Camel
+
+```java
+…
+JMXServiceURL url = new JMXServiceURL("service:jmx:rmi:///jndi/rmi://localhost:1099/jmxrmi");
+
+Map<String, Object> environment = new HashMap<String, Object>();
+String[] credentials = new String[] { "login", "password" };
+environment.put(JMXConnector.CREDENTIALS, credentials);
+
+jmxc = JMXConnectorFactory.connect(url, environment);
+
+MBeanServerConnection mbsc = jmxc.getMBeanServerConnection();
+ObjectName mbeanName = new ObjectName("org.apache.servicemix:ContainerName=ServiceMix,Type=Statistics,SubType=Endpoint,Name=internal_{http://www.zenika.com}xslt_endpoint");
+
+System.out.println("ECHANGE ENTREE : " + mbsc.getAttribute(mbeanName, "inboundExchangeCount"));
+…
+```
+
+Notes :
+
+
+
+## Camel et le monitoring
+
+- Camel ne fournit pas d'outil de monitoring de haut niveau
+- On peut s'appuyer sur JMX pour mettre en place un bus de contrôle au sein de Camel
+  - Configuration
+  - Statistiques
+
+- Afin d'apporter plus de richesse au monitoring, on peut s'appuyer sur les EIP dédiés
+
+Notes :
+
+
+
+## EIP : Wire Tap
+
+- En Camel
+
+```java
+from("direct:source")
+  .to("log:serviceLogger")
+  .wireTap("direct:audit")
+  .to("direct:destination");
+```
+
+![](ressources/images/camel_08_monitoring-10000200000001FE000000B589476ACE.gif)
+
+Permet d'envoyer une copie d'un message vers le système de monitoring ou vers un stockage de données
+
+Notes :
+
+
+
+## EIP : Detour
+
+- En Camel
+
+Booléen
+
+```java
+from("direct:source")
+  .choice()
+    .when().method("beanControle", "detour")
+      .to("direct:detour")
+    .otherwise()
+      .to("direct:destination");
+  .end()
+```
+
+![](ressources/images/camel_08_monitoring-100000000000025E000000B8A44CF116.gif)
+
+Permet de détourner des messages en cas de besoin (validation, débogage)
+
+Notes :
+
+
+
+## Logs
+
+- Basé sur SLF4J
+- Camel Context
+  - Tracer Interceptor (Debug uniquement)
+  - MDC Logging : exchangeId, messageId, correlationId
+
+- CXF Logging Interceptor
+
+```xml
+<camelContext id="monCamel" trace="true" useMDCLogging="true">
+```
+
+```xml
+<cxf:bus xmlns="http://cxf.apache.org/core">
+  <cxf:features>
+    <cxf:logging/>
+  </cxf:features>
+</cxf:bus>
+```
+
+Notes :
+
+
+
+## Logs
+
+- Composant Log
+- EIP Log
+- Bonnes pratiques
+  - Utiliser le CamelCorrelationId et le Thread name
+  - Centraliser les logs : ELK, GrayLog2, Splunk...
+
+```java
+from("direct:source")
+  .log(LoggingLevel.INFO,
+    "com.zenika.MaRoute",
+    "Traitement fichier ${header.CamelFileName} ${body}")
+  .to("direct:destination");
+```
+
+```java
+from("direct:source")
+  .to("log:com.zenika.MaRoute?level=DEBUG&showAll=true&multiline=true")
+  .to("direct:destination");
+```
+
+Notes :
+
+
+
+## Monitoring en bref
+
+- Il est important de penser aux problématiques de monitoring dès le début d'un chantier d'intégration
+- Les solutions de monitoring peuvent aller
+  - du plus simple
+    - Fichiers de log
+    - Base de données
+
+  - Au plus complexe
+    - BAM (Business Activity Monitoring)
+    - CEP (Complex Event Processing)
+
+- D'autres EIP de monitoring sont disponibles
+  - Message History
+  - Smart Proxy
+
+Notes :
 
 
 
@@ -155,6 +275,6 @@ Liste des pages (classes css) existantes :
 
 
 
-<!-- .slide: class="page-tp1" -->
+## TP 10
 
-
+<!-- .slide: class="page-tp10" -->
