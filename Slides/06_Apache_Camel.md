@@ -185,7 +185,40 @@ TODO parler des enpoints de type direct, SEDA, ...
 
 
 
-<!-- .slide: class="page-questions" -->
+## Camel – Le composant direct
+
+- Syntaxe `direct:label`
+- Permet de faire la liaison entre 2 routes
+- La liaison est synchrone
+- C'est le même thread qui va parcourir la route suivante
+- La destination doit être dans le même contexte Camel
+
+
+
+## Camel – Le composant seda
+
+- Syntaxe `seda:label`
+- Permet de faire la liaison entre 2 routes
+- La liaison est asynchrone
+- C'est un autre thread qui va parcourir la route suivante
+- La première route peut continuer sans attendre la fin de la route suivante en fonction du Message Exchange Pattern
+- La destination doit être dans le même contexte Camel
+
+
+
+## Camel – Le composant seda
+
+- Syntaxe `vm:label`
+- Permet de faire la liaison entre 2 routes
+- La liaison est asynchrone
+- Il est équivalent au seda mais n'a pas la même visibilité
+- L'autre route peut se trouver dans un autre contexte Camel
+mais dans la même JVM
+  ex : Communication entre 2 webapps dans un même serveur d'application
+  
+  
+  
+ <!-- .slide: class="page-questions" -->
 
 
 
