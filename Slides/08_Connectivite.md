@@ -75,7 +75,7 @@ from("file://order/input?move=.ok&delay=3000")
 
 ## JMS
 
-![Schéma JMS](ressources/images/02_jms.png)
+![Schéma JMS](ressources/images/ch06/01_jms.png)
 
 
 
