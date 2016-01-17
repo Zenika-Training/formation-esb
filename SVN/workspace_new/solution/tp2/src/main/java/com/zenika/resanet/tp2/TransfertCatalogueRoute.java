@@ -6,9 +6,8 @@ public class TransfertCatalogueRoute extends RouteBuilder {
 
 	@Override
 	public void configure() throws Exception {
-		
-		from("file://C:/resanet/exportCatalogue")
-		.to("file://C:/resanet/importWeb");
+		from("file:{{source.path}}")
+		.to("file:{{target.path}}");
 		
 	}
 
