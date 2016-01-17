@@ -18,7 +18,6 @@ public class TransactionTest extends CamelTestSupport {
 
     private static ApplicationContext springContext;
     private static SpringCamelContext camelContext;
-    private static SpringCamelContext camelTemplate;
 
     @BeforeClass
     public static void setUpBeforeClass() throws Exception {

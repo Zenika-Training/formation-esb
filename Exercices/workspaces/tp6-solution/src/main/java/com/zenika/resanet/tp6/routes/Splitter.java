@@ -1,6 +1,6 @@
 package com.zenika.resanet.tp6.routes;
 
-import org.apache.camel.Property;
+import org.apache.camel.ExchangeProperty;
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.language.bean.BeanExpression;
 
@@ -20,7 +20,7 @@ public class Splitter extends RouteBuilder {
 	}
 
 
-	public String listbean(@Property("CamelSplitIndex") String idx) {
+	public String listbean(@ExchangeProperty("CamelSplitIndex") String idx) {
 		return "bean:bean" + idx;
 	}
 	

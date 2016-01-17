@@ -7,11 +7,11 @@ public class DetourRoute extends RouteBuilder {
 	@Override
 	public void configure() throws Exception {
 		// controle du detour
-		from("jetty:http://localhost:8085/detour").beanRef("detourControle","changeDetour");
+		from("jetty:http://localhost:8085/detour").bean("detourControle","changeDetour");
 
         // aussi en WS
         from("cxf:bean:detourEndpoint")
-                .beanRef("detourControle","changeDetour")
+                .bean("detourControle","changeDetour")
         .transform(constant("OK"));
 
 		// detour

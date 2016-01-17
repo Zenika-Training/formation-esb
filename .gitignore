@@ -1,5 +1,8 @@
-node_modules
-.idea
-PDF
-dist
-.DS_Store
+.project
+.classpath
+.settings
+**/target
+**/.metadata
+**/RemoteSystemsTempFiles
+.gitignore
+SVN
