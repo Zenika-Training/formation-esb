@@ -83,7 +83,7 @@ Notes :
 
 - Comment les services utilisant des formats de données différents peuvent-ils communiquer ensembles ?
 
-![](ressources/images/camel_04_routage_transformations_et_integration-10000000000001A50000007C03B94A84.gif)
+![Message Translator](ressources/images/ch09/01_EIP_Message_Translator.gif)
 
 Notes :
 
@@ -210,7 +210,7 @@ Notes :
 | JSON   | Jackson    | Conversion vers le JSON en utilisant Jackson                                      |
 | HTML   | TidyMarkup | Facilite l'extraction d'infos depuis des pages html potentiellement mal formatées |
 
-![](ressources/images/camel_04_routage_transformations_et_integration-TablePreview1.svm)
+![](ressources/images/ch09/02_Data_Format_TablePreview1.svm)
 
 Notes :
 
@@ -276,7 +276,7 @@ Notes :
 
 ## Introduction aux EIP de routage
 
-![](ressources/images/camel_04_routage_transformations_et_integration-200014290000BCAF000083D9167C531E.svm)
+![](ressources/images/ch09/03_EIP_Routage.svm)
 
 Notes :
 
@@ -305,7 +305,7 @@ Notes :
   - Existence de champs
   - Valeur de champs
 
-![](ressources/images/camel_04_routage_transformations_et_integration-10000200000001EA000000765B00DE26.gif)
+![Content Based Router](ressources/images/ch09/04_EIP_CBR.gif)
 
 Notes :
 
@@ -399,7 +399,7 @@ Notes :
 - Permet d'éviter de surcharger un système
 - Épure les flux de messages
 
-![](ressources/images/camel_04_routage_transformations_et_integration-10000000000002400000006B9ED0A81F.png)
+![](ressources/images/ch09/05_EIP_Message_Filter.png)
 
 Notes :
 
@@ -431,7 +431,7 @@ Notes :
 - Recipient List
   - Comment router un message vers une liste (statique ou dynamique) de destinataires ?
 
-![](ressources/images/camel_04_routage_transformations_et_integration-10000200000001CE000000C5ADF821CC.png)
+![](ressources/images/ch09/06_EIP_Recipient_List.png)
 
 Notes :
 
@@ -517,7 +517,7 @@ Notes :
 - Routing Slip
   - Comment pouvons nous router un message au travers d'une série de destinations, quand la séquence d'appels n'est pas connue à la conception et peut varier selon les messages entrants ?
 
-![](ressources/images/camel_04_routage_transformations_et_integration-10000000000001AD000000C517F8CCA8.gif)
+![Routing Slip](ressources/images/ch09/07_EIP_Routing_Slip.gif)
 
 Notes :
 
@@ -594,7 +594,7 @@ Notes :
 | Routage statique (décrit par la route)    | pipeline                                                   | multicast                                  |
 | Routage dynamique (décrit par le message) | routingSlip                                                | recipientList                              |
 
-![](ressources/images/camel_04_routage_transformations_et_integration-TablePreview2.svm)
+![Bilan Routage 1 vers N](ressources/images/ch09/08_Bilan_Routage_1_N.svm)
 
 Notes :
 
@@ -625,7 +625,7 @@ Notes :
 
 ## EIP – Dynamic Router
 
-![](ressources/images/camel_04_routage_transformations_et_integration-10000000000001EE000000F31EBD4DCF.png)
+![](ressources/images/ch09/09_EIP_Dynamic_Router.png)
 
 Notes :
 
@@ -685,7 +685,7 @@ Notes :
 - Splitter
   - Comment traiter un message contenant plusieurs parties, chacune d'entre elles pouvant être traitées différemment ?
 
-![](ressources/images/camel_04_routage_transformations_et_integration-10000200000001DD0000007E5866829E.gif)
+![](ressources/images/ch09/10_EIP_Splitter.gif)
 
 Notes :
 
@@ -749,7 +749,7 @@ Notes :
 - Aggregator
   - Comment pouvons nous combiner des messages individuels (bien que liés) pour n'en former qu'un seul ?
 
-![](ressources/images/camel_04_routage_transformations_et_integration-10000200000001C200000086144E07A6.gif)
+![Aggregator](ressources/images/ch09/11_EIP_Aggregator.gif)
 
 Notes :
 
@@ -894,7 +894,7 @@ Notes :
 - Resequencer
   - Comment pouvons nous réordonner des messages ayant un lien mais arrivés aléatoirement ?
 
-![](ressources/images/camel_04_routage_transformations_et_integration-10000200000001930000006A2E0374FB.gif)
+![](ressources/images/ch09/12_EIP_Resequencer.gif)
 
 Notes :
 
@@ -985,7 +985,7 @@ Notes :
 - Composed Message Processor
   - Comment pouvons nous maintenir un flux de messages dans sa globalité, alors que les messages sont segmentés et traités par des composants différents ?
 
-![](ressources/images/camel_04_routage_transformations_et_integration-100002000000025E000000DC3758E842.gif)
+![Composed Message Processor](ressources/images/ch09/13_EIP_Composed_Message_Processor.gif)
 
 Notes :
 
@@ -1144,7 +1144,7 @@ Notes :
 - Scatter Gather
   - Comment pouvons nous maintenir un flux de messages dans sa globalité, alors que les messages sont diffusés à de multiples composants, chacun pouvant retourner une réponse ?
 
-![](ressources/images/camel_04_routage_transformations_et_integration-1000020000000179000000E23FF8E9E2.gif)
+![Scatter Gather](ressources/images/ch09/14_EIP_Scatter_Gather.gif)
 
 Notes :
 
@@ -1204,7 +1204,7 @@ Notes :
 - Envelope Wrapper
   - Comment les services existants peuvent-ils participer à des échanges de messages qui positionnent des spécificités (comme les headers, cryptage) sur le format du message ?
 
-![](ressources/images/camel_04_routage_transformations_et_integration-1000020000000244000000AC7F156EDB.gif)
+![Envelope Wrapper](ressources/images/ch09/15_EIP_Envelope_Wrapper.gif)
 
 Notes :
 
@@ -1243,7 +1243,7 @@ Notes :
 - Content Enricher
   - Comment communiquer avec une autre service si le message d'origine ne contient pas toutes les données utiles ?
 
-![](ressources/images/camel_04_routage_transformations_et_integration-100002000000018A000000CC129072FF.gif)
+![Content Enricher](ressources/images/ch09/16_EIP_Content_Enricher.gif)
 
 Notes :
 
@@ -1332,12 +1332,18 @@ Notes :
 
 
 
+## EIP - Claim Check
+
+TODO issue #27
+
+
+
 ## EIP – Normalizer
 
 - Normalizer
   - Comment pouvons-nous traiter des messages qui sont sémantiquement équivalents, mais qui sont dans un format différent les uns des autres ?
 
-![](ressources/images/camel_04_routage_transformations_et_integration-100002000000027A000000F0D98EC9F0.gif)
+![](ressources/images/ch09/17_EIP_Normalizer.gif)
 
 Notes :
 
@@ -1577,7 +1583,7 @@ Notes :
 - Process Manager
   - Comment pouvons nous router un message au travers de plusieurs destinations, alors que les appels ne sont pas connus à la conception, et qu'ils ne sont pas séquentiels ?
 
-![](ressources/images/camel_04_routage_transformations_et_integration-100002000000013B0000009DC0A693E7.gif)
+![](ressources/images/ch09/18_EIP_Process_Manager.gif)
 
 Notes :
 
