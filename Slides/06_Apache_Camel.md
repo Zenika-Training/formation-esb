@@ -227,7 +227,7 @@ mais dans la même JVM
 
 ... si on a pratiqué le métier après 2004 et qu'on sait ce qu'est une annotation
 
-TODO : issue #
+TODO : issue #30
 
 XML
 Spring
@@ -239,6 +239,8 @@ Spring
 
 
 ## Exchange, Messages, Headers, Id, ... les objets de Camel
+
+Issue#31
 
 Présenter les possiblilités d'accéder à :
 - le contenu des Exchanges
