@@ -1332,6 +1332,12 @@ Notes :
 
 
 
+## EIP - Claim Check
+
+TODO issue #27
+
+
+
 ## EIP – Normalizer
 
 - Normalizer
