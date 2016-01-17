@@ -5,12 +5,12 @@
 	<artifactId>tp2</artifactId>
 	<packaging>bundle</packaging>
 
-    <parent>
-        <groupId>com.zenika.esb</groupId>
-        <artifactId>tp-parent</artifactId>
-        <version>1.0.0</version>
-        <relativePath>../pom.xml</relativePath>
-    </parent>
+	<parent>
+		<groupId>com.zenika.esb</groupId>
+		<artifactId>tp-parent</artifactId>
+		<version>1.0.0</version>
+		<relativePath>../pom.xml</relativePath>
+	</parent>
 
 	<dependencies>
 		<dependency>
@@ -36,7 +36,14 @@
 					</instructions>
 				</configuration>
 			</plugin>
-			
+			<plugin>
+				<groupId>org.apache.camel</groupId>
+				<artifactId>camel-maven-plugin</artifactId>
+				<configuration>
+					<useCDI>true</useCDI>
+				</configuration>
+			</plugin>
+
 		</plugins>
 	</build>
 </project>
