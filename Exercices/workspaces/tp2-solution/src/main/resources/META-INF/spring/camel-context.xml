@@ -9,6 +9,7 @@
 	   
 	<camelContext xmlns="http://camel.apache.org/schema/spring">
 		<package>com.zenika.resanet.tp2</package>
+		<propertyPlaceholder id="properties" location="classpath:configuration.properties"/>
 	</camelContext>
  
 </beans>
