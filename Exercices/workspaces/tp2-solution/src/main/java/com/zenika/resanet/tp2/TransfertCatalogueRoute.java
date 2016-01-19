@@ -1,22 +1,13 @@
 package com.zenika.resanet.tp2;
 
 import org.apache.camel.builder.RouteBuilder;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Service;
 
-@Service
 public class TransfertCatalogueRoute extends RouteBuilder {
-
-	@Value("${export.catalogue}")
-	private String exportCatalogueUri;
-	
-	@Value("${import.web}")
-	private String importWebUri;
 	
 	@Override
 	public void configure() throws Exception {
 		
-		from(exportCatalogueUri)
+		from("file:{{source.path}}")
 		.to("direct:from");
 		
 		from("direct:from")
@@ -24,7 +15,7 @@ public class TransfertCatalogueRoute extends RouteBuilder {
 		.to("direct:to");
 		
 		from("direct:to")
-		.to(importWebUri);
+		.to("file:{{target.path}}");
 		
 	}
 
